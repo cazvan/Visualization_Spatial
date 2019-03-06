@@ -72,6 +72,7 @@ To know what shapefiles are now in your directory:
 You select which map from the object _maps_ you need:
 
 ```{r, eval=FALSE, results='hide', warning=FALSE,message=FALSE}
+# /\/\ this hides messages and warnings
 # notice the parameters use in the chunk!!
 
 library(rgdal)
@@ -87,8 +88,8 @@ plot(wazipMap)
 You can control some nice details:
 ```{r, eval=FALSE}
 plot(wazipMap,
-     border='blue',#color of lines
-     col='yellow', #color of polygon
+     border='black',#color of lines
+     col='blue', #color of polygon
      lwd=0.1) #thickness
 ```
 
@@ -136,7 +137,7 @@ plot(contriWA_geo,
      pch=20, #type of character (see link above)
      col = "red", 
      cex = .6, # shrinking
-     add=T) # VERY important
+     add=T) # VERY important (put new info on top of map)
 ```
 
 You may want to alter the order of the layers, and using just the whole state without internal divisions:
@@ -182,7 +183,7 @@ library(leaflet)
 
 leaflet(contriWA_geo) %>% 
     addTiles() %>% 
-    addCircleMarkers(clusterOptions = markerClusterOptions())
+    addCircleMarkers(clusterOptions = markerClusterOptions()) #this option clusters the points so it doesn't plot all 3 6 million dots
 ```
 
 
@@ -208,15 +209,12 @@ WA_zip_contri=with(contriWA,
 ```
 
 
-
-
 ```{r, eval=FALSE}
 #see result:
 head(WA_zip_contri)
 ```
 
-
-``````{r, eval=FALSE}
+```{r, eval=FALSE}
 names(WA_zip_contri)[2]='AVE_Amount'
 ```
 
